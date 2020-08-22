@@ -61,5 +61,15 @@ client.on('message', async message => {
             );
 
             message.channel.send(embed);
+    } else if (command === cats) {
+        const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
+
+        const catEmbed = new MessageEmbed()
+            .setColor('#c446f2')
+            .setTitle('cats!')
+            .addFields(
+                { name: 'fun fact', value: fact },
+                { name: 'cat picutre', value: file }
+            );
     }
 });
