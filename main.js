@@ -17,7 +17,7 @@ client.once('ready', () => {
 });
 
 // login to Discord with your app's token
-client.login('NzQ2NTIzMzI1MDIyNDcwMTY1.X0BkBg.EIoNgp4YD46kcw9jsVEYbK07hMc');
+client.login('no you will not use my bot token for malicious purposes');
 
 // listen for messages and report them to the console
 
