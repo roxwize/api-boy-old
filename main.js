@@ -3,6 +3,10 @@ const Discord = require('discord.js');
 const { Client, MessageEmbed } = require('discord.js');
 // for getting apis
 const fetch = require('node-fetch');
+const deepai = require('deepai');
+
+// api key for deepai
+deepai.setApiKey('f633d02f-8851-4d16-bf1a-79feaad36e3f');
 
 // create a new Discord client
 const client = new Discord.Client();
