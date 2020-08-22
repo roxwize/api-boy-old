@@ -3,6 +3,8 @@ this is a discord bot i made to test APIs to learn, and for fun
 
 you can view the list of commands with *help, durrrr
 
+current features are \*cats (cat facts) and \*dogs (dog facts), all others (\*ping, \*apitest) are just debug
+
 invite link is [here][1]
 
 if you would like to work with me on this bot, dm me on discord: basically_hoylecake#0146
