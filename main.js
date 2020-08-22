@@ -79,9 +79,18 @@ client.on('message', async message => {
         message.channel.send(dogEmbed);
         console.log('done!');
     } else if (command === 'ai') {
+        console.log('*ai requested...');
         var resp = await deepai.callStandardApi("text2img", {
             text: "discord bot",
         });
-        console.log(resp);
+        
+        const aiEmbed = new MessageEmbed()
+            .setColor('#c446f2')
+            .setTitle('text2image (input is \"discord bot\"')
+            .setImage(resp.output_url)
+            .setFooter('Provided by deepai.org')
+
+        message.channel.send(aiEmbed);
+        console.log('done!');
     }
 });
