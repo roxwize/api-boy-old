@@ -39,9 +39,17 @@ client.on('message', message => {
         message.channel.send('current list of commands (prefix is *): \n \nhelp\napitest\nping\ninvite\ncats\ndogs\nai');
     } else if (command === 'invite') {
         message.channel.send('http://discord.com/oauth2/authorize?client_id=746523325022470165&permissions=8&scope=bot');
+    } else if (command === 'argtest') {
+        if (!args.length) {
+            return message.channel.send('no arguments provided');
+        } else if (args[0] === 'stupid') {
+            return message.channel.send('GRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR');
+        }
+        message.channel.send(`arguments: ${args}`);
     }
 });
 
+//remember to change the github main.js file too!
 client.on('message', async message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
@@ -101,17 +109,25 @@ client.on('message', async message => {
         console.log('done!');
     } else if (command === 'ai') {
         console.log('*ai requested...');
-        var resp = await deepai.callStandardApi("text2img", {
-            text: "discord bot",
-        });
-        
-        const aiEmbed = new MessageEmbed()
-            .setColor('#c446f2')
-            .setTitle('text2image (input is \"discord bot\"')
-            .setImage(resp.output_url)
-            .setFooter('Provided by deepai.org')
-
-        message.channel.send(aiEmbed);
-        console.log('done!');
+        const input = args
+        if (!args.length) {
+            return message.channel.send("please provide text for the output");
+        } else if (!args.length >= 2) {
+            return message.channel.send("only one argument is allowed at the moment");
+        } else {
+            var resp = await deepai.callStandardApi("text2img", {
+                text: `${input}`,
+            });
+            
+            const aiEmbed = new MessageEmbed()
+                .setColor('#c446f2')
+                .setTitle('text2image')
+                .setImage(resp.output_url)
+                .setFooter('Provided by deepai.org')
+    
+            message.channel.send(aiEmbed);
+            console.log('done!');
+        }
+        console.log(input);
     }
 });
