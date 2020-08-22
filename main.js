@@ -25,6 +25,23 @@ client.login('no you will not use my bot token for malicious purposes');
 
 // listen for messages and report them to the console
 
+client.on('message', message => {
+	const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`);
+	if (!prefixRegex.test(message.content)) return;
+
+	const [, matchedPrefix] = message.content.match(prefixRegex);
+	const args = message.content.slice(matchedPrefix.length).trim().split(/ +/);
+	const command = args.shift().toLowerCase();
+	// pong!!
+    if (command === 'ping') {
+	    message.channel.send('pong!!!!!!');
+    } else if (command === 'help') {
+        message.channel.send('current list of commands (prefix is *): \n \nhelp\napitest\nping\ninvite\ncats\ndogs\nai');
+    } else if (command === 'invite') {
+        message.channel.send('http://discord.com/oauth2/authorize?client_id=746523325022470165&permissions=8&scope=bot');
+    }
+});
+
 client.on('message', async message => {
 	if (!message.content.startsWith(prefix) || message.author.bot) return;
 
