@@ -76,7 +76,3 @@ client.on('message', async message => {
         console.log('done!');
     }
 });
-
-client.on('guildMemberAdd', member => {
-    member.guild.channels.get('channelID').send("Welcome to the server! View list of commands, among other things, with *help")
-});
