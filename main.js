@@ -32,7 +32,7 @@ client.on('message', message => {
     if (command === 'ping') {
 	    message.channel.send('pong!!!!!!');
     } else if (command === 'help') {
-        message.channel.send('current list of commands (prefix is *): \n \n help\napitest\nping\ninvite');
+        message.channel.send('current list of commands (prefix is *): \n \nhelp\napitest\nping\ninvite\ncats');
     } else if (command === 'invite') {
         message.channel.send('http://discord.com/oauth2/authorize?client_id=746523325022470165&permissions=8&scope=bot');
     } else {
@@ -50,6 +50,7 @@ client.on('message', async message => {
         const { fact } = await fetch('http://catfact.ninja/fact').then(response => response.json());
         const { text } = await fetch('https://uselessfacts.jsph.pl/random.json?language=en').then(response => response.json());
         const { facts } = await fetch('https://dog-api.kinduff.com/api/facts').then(response => response.json());
+        const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
 
         const embed = new MessageEmbed()
             .setColor('#d1bf66')
@@ -57,19 +58,21 @@ client.on('message', async message => {
             .addFields(
                 { name: 'catfact.ninja', value: fact },
                 { name: 'uselessfacts.jsph.pl', value: text},
-                { name: 'dog-api.kinduff.com', value: facts}
+                { name: 'dog-api.kinduff.com', value: facts},
+                { name: 'aws.random.cat', value: file}
             );
 
             message.channel.send(embed);
-    } else if (command === cats) {
+    } else if (command === 'cats') {
+        const { fact } = await fetch('http://catfact.ninja/fact').then(response => response.json());
         const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
 
         const catEmbed = new MessageEmbed()
             .setColor('#c446f2')
-            .setTitle('cats!')
-            .addFields(
-                { name: 'fun fact', value: fact },
-                { name: 'cat picutre', value: file }
-            );
+            .setTitle('cat fact')
+            .setDescription(fact)
+            .setImage(file)
+
+            message.channel.send(catEmbed);
     }
 });
