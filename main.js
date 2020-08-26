@@ -36,7 +36,7 @@ client.on('message', message => {
     if (command === 'ping') {
 	    message.channel.send('pong!!!!!!');
     } else if (command === 'help') {
-        message.channel.send('current list of commands (prefix is *): \n \nhelp\napitest\nping\ninvite\ncats\ndogs\nai');
+        message.channel.send('current list of commands (prefix is *): \n \nhelp\napitest\nping\ninvite\ncats\ndogs\nai\nhoroscope');
     } else if (command === 'invite') {
         message.channel.send('http://discord.com/oauth2/authorize?client_id=746523325022470165&permissions=8&scope=bot');
     } else if (command === 'argtest') {
