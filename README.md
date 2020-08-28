@@ -3,7 +3,8 @@ this is a discord bot i made to test APIs to learn, and for fun
 
 you can view the list of commands with *help, durrrr
 
-current features are \*cats (cat facts), \*dogs (dog facts), and \*ai (ai image), all others (\*ping, \*apitest, \*argtest) are just debug
+edit: i will no longer be updating "api test" command
+current features are \*cats (cat facts), \*dogs (dog facts), \*ai (ai image), and \*horoscope (horoscope) all others (\*ping, \*apitest, \*argtest) are just debug
 
 invite link is [here][1]
 
